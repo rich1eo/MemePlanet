@@ -10,7 +10,6 @@
                          class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">${entry.title}</h5>
-                        <p class="card-text">${entry.price} ₽</p>
                     </div>
                 </div>
             </a>

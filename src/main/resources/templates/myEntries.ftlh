@@ -10,9 +10,9 @@
     <div class="collapse mb-3" id="collapseExample" style="">
         <form action="/entry/create" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="productName">Заголовок записи</label>
+                <label for="entryName">Заголовок записи</label>
                 <input type="text" required class="form-control"
-                       id="productName" name="title">
+                       id="entryName" name="title">
             </div>
             <div class="form-group">
                 <label for="description">Содержание</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <div class="custom-file">
-                    <input required type="file" name="file1" id="file">
+                    <input type="file" name="file" id="file">
                     <label class="custom-file-label" for="file">Первая фотография к товару</label>
                 </div>
             </div>
@@ -30,17 +30,17 @@
     </div>
     <div class="card-columns">
         <#list entries as entry>
-            <a href="/product/${entry.id}" class="product-link">
+            <a href="/entry/${entry.id}" class="product-link">
                 <div class="card text-white bg-dark my-3 product">
                     <div class="card-top">
-                        <form action="/product/delete/${entry.id}" method="post">
+                        <form action="/entry/delete/${entry.id}" method="post">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                             <button type="submit" class="btn btn-danger m-3">
                                 Удалить
                             </button>
                         </form>
                     </div>
-                    <img src="/images/${entry.images}"
+                    <img src="/images/${entry.previewImageId}"
                          class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">${entry.title}</h5>

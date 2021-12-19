@@ -37,7 +37,7 @@ public class EntryController {
         model.addAttribute("images", entry.getImages());
         model.addAttribute("authorEntry", entry.getUser());
         model.addAttribute("comment", entry.getComment());
-        return "entry-info";
+        return "entryInfo";
     }
 
     @PostMapping("/entry/create")
@@ -50,7 +50,7 @@ public class EntryController {
     @PostMapping("/entry/delete/{id}")
     public String deleteEntry(@PathVariable Long id, Principal principal) {
         entryService.deleteEntry(entryService.getUserByPrincipal(principal), id);
-        return "redirect:/my/entries";
+        return "redirect:/my/entry";
     }
 
     @GetMapping("/my/entry")
