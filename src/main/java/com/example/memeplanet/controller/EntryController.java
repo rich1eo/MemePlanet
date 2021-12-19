@@ -1,10 +1,12 @@
 package com.example.memeplanet.controller;
 
+import com.example.memeplanet.model.Comment;
 import com.example.memeplanet.model.Entry;
 import com.example.memeplanet.model.User;
 import com.example.memeplanet.service.CommentService;
 import com.example.memeplanet.service.EntryService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 public class EntryController {
     private final EntryService entryService;
@@ -31,6 +35,13 @@ public class EntryController {
         return "entries";
     }
 
+    @PostMapping("/entry/create")
+    public String createEntry(@RequestParam("file") MultipartFile file, Entry entry, Principal principal)
+            throws IOException {
+        entryService.saveEntry(principal, entry, file);
+        return "redirect:/my/entry";
+    }
+
     @GetMapping("entry/{id}")
     public String entryInfo(@PathVariable Long id, Model model, Principal principal) {
         Entry entry = entryService.getEntryById(id);
@@ -38,15 +49,8 @@ public class EntryController {
         model.addAttribute("entries", entry);
         model.addAttribute("images", entry.getImages());
         model.addAttribute("authorEntry", entry.getUser());
-        model.addAttribute("comment", entry.getComment());
+        model.addAttribute("comments", entry.getComment());
         return "entryInfo";
-    }
-
-    @PostMapping("/entry/create")
-    public String createEntry(@RequestParam("file") MultipartFile file, Entry entry, Principal principal)
-            throws IOException {
-        entryService.saveEntry(principal, entry, file);
-        return "redirect:/my/entry";
     }
 
     @PostMapping("/entry/delete/{id}")

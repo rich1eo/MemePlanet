@@ -14,9 +14,9 @@ import java.security.Principal;
 public class CommentController {
     private final CommentService commentService;
 
-    @PostMapping
-    public Comment create(@RequestBody Comment comment, Principal principal) {
-        return commentService.create(comment, commentService.getUserByPrincipal(principal));
+    @PostMapping("/addComment")
+    public void create(@RequestBody Comment comment, Principal principal) {
+        commentService.create(comment, commentService.getUserByPrincipal(principal).getName());
     }
 }
 

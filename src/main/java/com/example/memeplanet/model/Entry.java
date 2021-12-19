@@ -3,6 +3,7 @@ package com.example.memeplanet.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,9 +34,9 @@ public class Entry {
     private User user;
     private LocalDateTime dateOfCreated;
 
-    @OneToMany
-    @JoinColumn
-    private List<Comment> comment;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "entry")
+    @ToString.Exclude
+    private List<Comment> comment = new ArrayList<>();
 
     @PrePersist
     private void init() {
