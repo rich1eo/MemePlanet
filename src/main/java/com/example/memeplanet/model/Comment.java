@@ -16,14 +16,15 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "text")
     private String text;
 
-    @ManyToOne
-    @JoinColumn
-    private Entry entry;
+    @Column(name = "user")
+    private String user;
 
     @ManyToOne
-    @JoinColumn
-    private User user;
+    private Entry entry;
 }
+
+

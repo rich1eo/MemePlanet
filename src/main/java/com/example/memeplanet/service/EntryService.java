@@ -49,7 +49,7 @@ public class EntryService {
         if (entry != null) {
             if (entry.getUser().getId().equals(user.getId())) {
                 entryRepository.delete(entry);
-                log.info("Entry with id = {} was deleted", id);
+                log.info("Entry with id = {} was deleted", entry.getId());
             } else {
                 log.error("User: {} haven't this entry with id = {}", user.getEmail(), id);
             }
