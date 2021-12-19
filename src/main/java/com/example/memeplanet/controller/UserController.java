@@ -1,5 +1,6 @@
 package com.example.memeplanet.controller;
 
+import com.example.memeplanet.model.Image;
 import com.example.memeplanet.model.User;
 import com.example.memeplanet.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @Controller
@@ -27,6 +31,14 @@ public class UserController {
                           Model model) {
         User user = userService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
+        return "profile";
+    }
+
+    @PostMapping("/profile")
+    public String addAvatar(@RequestParam("file") MultipartFile file, Principal principal, Model model)
+            throws IOException {
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
+        userService.addAvatar(principal, file);
         return "profile";
     }
 

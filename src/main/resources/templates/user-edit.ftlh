@@ -11,5 +11,4 @@
         <input type="hidden" value="${_csrf.token}" name="_csrf">
         <button type="submit" class="btn btn-info">Сохранить</button>
     </form>
-
 </@t.template>

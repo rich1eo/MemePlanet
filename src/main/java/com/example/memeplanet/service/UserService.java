@@ -1,13 +1,17 @@
 package com.example.memeplanet.service;
 
+import com.example.memeplanet.model.Image;
 import com.example.memeplanet.model.User;
 import com.example.memeplanet.model.enums.Role;
+import com.example.memeplanet.repositoty.ImageRepository;
 import com.example.memeplanet.repositoty.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +55,21 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void addAvatar(Principal principal, MultipartFile file) throws IOException {
+        User user = getUserByPrincipal(principal);
+        Image avatar = new Image();
+        if (avatar.getSize() != 0) {
+            avatar.setName(file.getName());
+            avatar.setOriginalFileName(file.getOriginalFilename());
+            avatar.setContentType(file.getContentType());
+            avatar.setSize(file.getSize());
+            avatar.setBytes(file.getBytes());
+            avatar.setUser(user);
+            user.setAvatar(avatar);
+        }
+        log.info("Saving new Avatar. User: {}", user.getUsername());
+    }
+
     public void changeUserRoles(User user, Map<String, String> form) {
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
@@ -68,4 +87,6 @@ public class UserService {
         if (principal == null) return new User();
         return userRepository.findByEmail(principal.getName());
     }
+
+
 }

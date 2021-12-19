@@ -26,7 +26,7 @@ public class EntryController {
         model.addAttribute("entries", entryService.listEntries(title));
         model.addAttribute("user", entryService.getUserByPrincipal(principal));
         model.addAttribute("searchWord", title);
-        return "redirect:/";
+        return "entries";
     }
 
     @GetMapping("entry/{id}")

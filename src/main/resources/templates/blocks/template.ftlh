@@ -22,7 +22,7 @@
             </a>
             <form class="d-flex" method="get" action="/">
                 <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search"
-                name="searchWord" <#if searchWord??>value="${searchWord}"</#if> id="searchWord">
+                       name="searchWord" <#if searchWord??>value="${searchWord}"</#if> id="searchWord">
                 <button class="btn btn-outline-info" type="submit">Поиск</button>
             </form>
             <#if user.email??>
