@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,10 +16,14 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
 
-    public Comment create(Comment comment, User user) {
+    public Comment create(Comment comment, String  user) {
         comment.setUser(user);
         commentRepository.save(comment);
         return comment;
+    }
+
+    public List<Comment> listComments() {
+        return commentRepository.findAll();
     }
 
     public User getUserByPrincipal(Principal principal) {

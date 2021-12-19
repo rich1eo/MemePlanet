@@ -2,6 +2,7 @@ package com.example.memeplanet.controller;
 
 import com.example.memeplanet.model.Entry;
 import com.example.memeplanet.model.User;
+import com.example.memeplanet.service.CommentService;
 import com.example.memeplanet.service.EntryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class EntryController {
     private final EntryService entryService;
+    private final CommentService commentService;
 
     @GetMapping("/")
     public String entries(@RequestParam(name = "searchWord", required = false) String title,

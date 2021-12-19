@@ -4,7 +4,7 @@
     <hr>
     <div class="card-columns">
         <#list entries as entry>
-            <a href="/product/${entry.id}" class="product-link">
+            <a href="/entry/${entry.id}" class="product-link">
                 <div class="card text-white bg-dark my-3 product">
                     <img src="/images/${entry.previewImageId}"
                          class="card-img-top">

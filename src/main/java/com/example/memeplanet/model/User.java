@@ -37,9 +37,6 @@ public class User implements UserDetails {
     private List<Entry> entries = new ArrayList<>();
     private LocalDateTime dateOfCreated;
 
-    @OneToMany
-    @JoinColumn
-    private List<Comment> comments;
 
     @PrePersist
     private void init() {
