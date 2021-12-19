@@ -27,3 +27,5 @@ public class Comment {
     @JoinColumn
     private User user;
 }
+
+
