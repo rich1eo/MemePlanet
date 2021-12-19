@@ -15,9 +15,9 @@
         <br>
         <form action="/profile" method="post">
             <div class="form-group">
-                <div class="custom-file">
-                    <input required type="file" name="file" id="file">
-                    <label class="custom-file-label" for="file">Загрузить аватарку</label>
+                <div class="custom-file" style="margin-bottom: 5px" >
+                    <input required type="file"  name="file" id="file">
+                    <label class="custom-file-label"  for="file">Загрузить аватарку</label>
                 </div>
                 <br>
                 <button type="submit" style="width: 100%" class="btn btn-info">Добавить</button>
@@ -30,8 +30,8 @@
             </a><br>
         </#if>
         <a class="btn btn-info mb-3" style="text-align: center; width: 100%"
-           href="/my/products">
-            Мои товары
+           href="/enrtyInfo">
+            Мои публикации
         </a>
         <form action="/logout" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>

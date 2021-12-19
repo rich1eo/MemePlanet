@@ -37,7 +37,7 @@ public class User implements UserDetails {
     private List<Entry> entries = new ArrayList<>();
     private LocalDateTime dateOfCreated;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany
     @JoinColumn
     private List<Comment> comments;
 

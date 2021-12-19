@@ -1,6 +1,7 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
-    <h1 style="text-align: center">Лента</h1><hr>
+    <h1 style="text-align: center">Лента</h1>
+    <hr>
     <div class="card-columns">
         <#list entries as entry>
             <a href="/product/${entry.id}" class="product-link">
