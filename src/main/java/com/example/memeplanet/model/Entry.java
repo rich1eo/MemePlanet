@@ -23,13 +23,19 @@ public class Entry {
     private String title;
     @Column(name = "description", columnDefinition = "text")
     private String description;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "entry")
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
+
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn
     private User user;
     private LocalDateTime dateOfCreated;
+
+    @OneToMany
+    @JoinColumn
+    private List<Comment> comment;
 
     @PrePersist
     private void init() {

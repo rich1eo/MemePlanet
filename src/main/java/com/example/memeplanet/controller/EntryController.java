@@ -36,6 +36,7 @@ public class EntryController {
         model.addAttribute("entries", entry);
         model.addAttribute("images", entry.getImages());
         model.addAttribute("authorEntry", entry.getUser());
+        model.addAttribute("comment", entry.getComment());
         return "entry-info";
     }
 
