@@ -30,7 +30,7 @@
             </a><br>
         </#if>
         <a class="btn btn-info mb-3" style="text-align: center; width: 100%"
-           href="/enrtyInfo">
+           href="/my/entry">
             Мои публикации
         </a>
         <form action="/logout" method="post">

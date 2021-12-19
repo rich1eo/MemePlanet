@@ -58,6 +58,6 @@ public class EntryController {
         User user = entryService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
         model.addAttribute("entries", user.getEntries());
-        return "my-entries";
+        return "myEntries";
     }
 }

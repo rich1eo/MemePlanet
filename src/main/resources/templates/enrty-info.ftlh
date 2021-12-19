@@ -11,5 +11,5 @@
 </#list>
 <b>Название: </b>${entry.title} <br>
 <b>Описание: </b>${entry.description} <br>
-<b>Автор: </b><a href="/user/${entry.user.id}">${user.}</a><br>
+<b>Автор: </b><a href="/user/${entry.user.id}"></a><br>
 </body>
