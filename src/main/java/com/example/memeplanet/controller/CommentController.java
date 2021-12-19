@@ -19,3 +19,5 @@ public class CommentController {
         return commentService.create(comment, commentService.getUserByPrincipal(principal));
     }
 }
+
+
